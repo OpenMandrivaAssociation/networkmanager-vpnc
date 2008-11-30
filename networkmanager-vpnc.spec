@@ -1,28 +1,26 @@
-%define nm_version          1:0.7.0-0.9.3.svn3623
+%define nm_version          0.7.0
 %define dbus_version        1.1
 %define gtk2_version        2.10.0
 %define vpnc_version        0.4
 %define shared_mime_version 0.16-3
 
-%define svn_snapshot svn3627
-
 Summary:   NetworkManager VPN integration for vpnc
 Name:      networkmanager-vpnc
 Epoch:     1
 Version:   0.7.0
-Release:   %mkrel 2.7.7.%{svn_snapshot}.1
+Release:   %mkrel 1
 License:   GPLv2+
 Group:     System/Base
 URL:       http://www.gnome.org/projects/NetworkManager/
-Source:    NetworkManager-vpnc-%{version}.%{svn_snapshot}.tar.gz
+Source:    http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.7/NetworkManager-vpnc-%version.tar.bz2
 Patch0:    NetworkManager-vpnc-0.7.0-gppasswd.patch
 Patch1:    NetworkManager-vpnc-0.7.0-desktop.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
-BuildRequires: gtk2-devel             >= %{gtk2_version}
-BuildRequires: dbus-devel             >= %{dbus_version}
-BuildRequires: NetworkManager-devel   >= %{nm_version}
-BuildRequires: NetworkManager-glib-devel >= %{nm_version}
+BuildRequires: gtk2-devel >= %{gtk2_version}
+BuildRequires: dbus-devel >= %{dbus_version}
+BuildRequires: libnm_util-devel >= %{nm_version}
+BuildRequires: libnm_glib-devel >= %{nm_version}
 BuildRequires: libGConf2-devel
 BuildRequires: gnomeui2-devel
 BuildRequires: gnome-keyring-devel
@@ -48,49 +46,43 @@ with NetworkManager and the GNOME desktop
 
 %prep
 %setup -q -n NetworkManager-vpnc-%{version}
-%patch0 -p1 -b .grouppswd
+#patch0 -p1 -b .grouppswd
 %patch1 -p1 -b .desktop
 
-
 %build
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
 %{__rm} -rf %{buildroot}
 %makeinstall_std
 
-rm -f %{buildroot}%{_libdir}/lib*.la
-rm -f %{buildroot}%{_libdir}/lib*.a
+rm -f %{buildroot}%{_libdir}/NetworkManager/lib*.la
 
 %find_lang NetworkManager-vpnc
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
+%if %mdkversion <200900
 %post
 %{update_desktop_database}
 %update_icon_cache hicolor
 
-
 %postun
 %{clean_desktop_database}
 %clean_icon_cache hicolor
-
+%endif
 
 %files -f NetworkManager-vpnc.lang
 %defattr(-, root, root)
-
 %doc AUTHORS ChangeLog
-%{_libdir}/lib*.so*
 %{_libexecdir}/nm-vpnc-auth-dialog
+%{_libexecdir}/nm-vpnc-service
+%{_libexecdir}/nm-vpnc-service-vpnc-helper
+%{_libdir}/NetworkManager/libnm-vpnc-properties.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 %config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
-%{_bindir}/nm-vpnc-service
-%{_bindir}/nm-vpnc-service-vpnc-helper
 %{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.glade
 %{_datadir}/applications/nm-vpnc.desktop
 %{_datadir}/icons/hicolor/48x48/apps/gnome-mime-application-x-cisco-vpn-settings.png
-
