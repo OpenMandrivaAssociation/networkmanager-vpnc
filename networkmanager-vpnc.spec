@@ -7,27 +7,23 @@
 Summary:   NetworkManager VPN integration for vpnc
 Name:      networkmanager-vpnc
 Epoch:     1
-Version:   0.7.0
-Release:   %mkrel 2
+Version:   0.7.999
+Release:   %mkrel 1
 License:   GPLv2+
 Group:     System/Base
 URL:       http://www.gnome.org/projects/NetworkManager/
 Source:    http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.7/NetworkManager-vpnc-%version.tar.bz2
-Patch0:    NetworkManager-vpnc-0.7.0-gppasswd.patch
-Patch1:    NetworkManager-vpnc-0.7.0-desktop.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: dbus-devel >= %{dbus_version}
-BuildRequires: libnm_util-devel >= %{nm_version}
-BuildRequires: libnm_glib-devel >= %{nm_version}
+BuildRequires: libnm-util-devel >= %{nm_version}
+BuildRequires: libnm-glib-devel >= %{nm_version}
+BuildRequires: libnm-glib-vpn-devel >= %{nm_version}
 BuildRequires: libGConf2-devel
 BuildRequires: gnomeui2-devel
-BuildRequires: gnome-keyring-devel
+BuildRequires: libgnome-keyring-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libpng-devel
 BuildRequires: intltool gettext
-
 Requires: gtk2             >= %{gtk2_version}
 Requires: dbus             >= %{dbus_version}
 Requires: NetworkManager   >= %{nm_version}
@@ -35,10 +31,9 @@ Requires: vpnc             >= %{vpnc_version}
 Requires: shared-mime-info >= %{shared_mime_version}
 Requires: GConf2
 Requires: gnome-keyring
-
-
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 This package contains software for integrating the vpnc VPN software
@@ -46,8 +41,6 @@ with NetworkManager and the GNOME desktop
 
 %prep
 %setup -q -n NetworkManager-vpnc-%{version}
-#patch0 -p1 -b .grouppswd
-%patch1 -p1 -b .desktop
 
 %build
 %configure2_5x --disable-static
