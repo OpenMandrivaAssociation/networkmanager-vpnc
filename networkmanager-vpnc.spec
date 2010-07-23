@@ -1,4 +1,4 @@
-%define nm_version          0.8
+%define nm_version          0.8.1
 %define dbus_version        1.1
 %define gtk2_version        2.10.0
 %define vpnc_version        0.4
@@ -7,7 +7,7 @@
 Summary:   NetworkManager VPN integration for vpnc
 Name:      networkmanager-vpnc
 Epoch:     1
-Version:   0.8.0.997
+Version:   0.8.1
 Release:   %mkrel 1
 License:   GPLv2+
 Group:     System/Base
