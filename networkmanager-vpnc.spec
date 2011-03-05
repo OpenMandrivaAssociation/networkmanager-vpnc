@@ -1,4 +1,4 @@
-%define nm_version          0.8.2
+%define nm_version          0.8.3.997
 %define dbus_version        1.1
 %define gtk2_version        2.10.0
 %define vpnc_version        0.4
@@ -7,7 +7,7 @@
 Summary:   NetworkManager VPN integration for vpnc
 Name:      networkmanager-vpnc
 Epoch:     1
-Version:   0.8.2
+Version:   0.8.3.995
 Release:   %mkrel 1
 License:   GPLv2+
 Group:     System/Base
@@ -21,7 +21,6 @@ BuildRequires: libnm-glib-vpn-devel >= %{nm_version}
 BuildRequires: libGConf2-devel
 BuildRequires: gnomeui2-devel
 BuildRequires: libgnome-keyring-devel
-BuildRequires: libglade2.0-devel
 BuildRequires: libpng-devel
 BuildRequires: intltool gettext
 Requires: gtk2             >= %{gtk2_version}
@@ -76,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/NetworkManager/libnm-vpnc-properties.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 %config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
-%{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.glade
+%{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
 # For now disabled in upstream
 #{_datadir}/applications/nm-vpnc.desktop
 %{_datadir}/icons/hicolor/48x48/apps/gnome-mime-application-x-cisco-vpn-settings.png
