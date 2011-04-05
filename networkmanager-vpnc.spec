@@ -7,7 +7,7 @@
 Summary:   NetworkManager VPN integration for vpnc
 Name:      networkmanager-vpnc
 Epoch:     1
-Version:   0.8.996
+Version:   0.8.3.995
 Release:   %mkrel 1
 License:   GPLv2+
 Group:     System/Base
