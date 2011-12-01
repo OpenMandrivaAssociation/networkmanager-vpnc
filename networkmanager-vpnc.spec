@@ -54,7 +54,7 @@ rm -f %{buildroot}%{_libdir}/NetworkManager/lib*.la
 %find_lang NetworkManager-vpnc
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion <200900
 %post
