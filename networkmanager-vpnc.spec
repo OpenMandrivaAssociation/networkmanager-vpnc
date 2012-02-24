@@ -1,18 +1,18 @@
-%define nm_version          0.8.6.0
+%define nm_version          0.9.2.0
 %define dbus_version        1.1
 %define gtk2_version        2.10.0
 %define vpnc_version        0.4
 %define shared_mime_version 0.16-3
 
-Summary:   NetworkManager VPN integration for vpnc
-Name:      networkmanager-vpnc
-Epoch:     1
-Version:   0.8.6.0
-Release:   %mkrel 1
-License:   GPLv2+
-Group:     System/Base
-URL:       http://www.gnome.org/projects/NetworkManager/
-Source:    http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.8/NetworkManager-vpnc-%{version}.tar.xz
+Summary:	NetworkManager VPN integration for vpnc
+Name:		networkmanager-vpnc
+Epoch:		1
+Version:	0.9.2.0
+Release:	1
+License:	GPLv2+
+Group:		System/Base
+URL:		http://www.gnome.org/projects/NetworkManager/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.9/NetworkManager-vpnc-%{version}.tar.xz
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: dbus-devel >= %{dbus_version}
 BuildRequires: libnm-util-devel >= %{nm_version}
@@ -32,42 +32,27 @@ Requires: GConf2
 Requires: gnome-keyring
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-BuildRoot: %{_tmppath}/%{name}-%{version}
 
 %description
 This package contains software for integrating the vpnc VPN software
 with NetworkManager and the GNOME desktop
 
 %prep
-%setup -q -n NetworkManager-vpnc-%{version}
+%setup -qn NetworkManager-vpnc-%{version}
 
 %build
 %configure2_5x --disable-static
 %make
 
 %install
-%{__rm} -rf %{buildroot}
+rm -rf %{buildroot}
 %makeinstall_std
 
 rm -f %{buildroot}%{_libdir}/NetworkManager/lib*.la
 
 %find_lang NetworkManager-vpnc
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion <200900
-%post
-%{update_desktop_database}
-%update_icon_cache hicolor
-
-%postun
-%{clean_desktop_database}
-%clean_icon_cache hicolor
-%endif
-
 %files -f NetworkManager-vpnc.lang
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog
 %{_libexecdir}/nm-vpnc-auth-dialog
 %{_libexecdir}/nm-vpnc-service
