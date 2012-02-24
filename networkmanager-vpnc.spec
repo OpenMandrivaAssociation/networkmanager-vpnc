@@ -1,6 +1,4 @@
 %define nm_version          0.9.2.0
-%define dbus_version        1.1
-%define gtk2_version        2.10.0
 %define vpnc_version        0.4
 %define shared_mime_version 0.16-3
 
@@ -13,21 +11,23 @@ License:	GPLv2+
 Group:		System/Base
 URL:		http://www.gnome.org/projects/NetworkManager/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.9/NetworkManager-vpnc-%{version}.tar.xz
-BuildRequires: gtk2-devel >= %{gtk2_version}
-BuildRequires: dbus-devel >= %{dbus_version}
-BuildRequires: libnm-util-devel >= %{nm_version}
-BuildRequires: libnm-glib-devel >= %{nm_version}
-BuildRequires: libnm-glib-vpn-devel >= %{nm_version}
-BuildRequires: libGConf2-devel
-BuildRequires: gnomeui2-devel
-BuildRequires: libgnome-keyring-devel
-BuildRequires: libpng-devel
-BuildRequires: intltool gettext
-Requires: gtk2             >= %{gtk2_version}
-Requires: dbus             >= %{dbus_version}
-Requires: NetworkManager   >= %{nm_version}
-Requires: vpnc             >= %{vpnc_version}
-Requires: shared-mime-info >= %{shared_mime_version}
+
+BuildRequires: gettext
+BuildRequires: intltool
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: pkgconfig(dbus-1)
+BuildRequires: pkgconfig(libnm-util) >= %{nm_version}
+BuildRequires: pkgconfig(libnm-glib) >= %{nm_version}
+BuildRequires: pkgconfig(libnm-glib-vpn) >= %{nm_version}
+BuildRequires: pkgconfig(gconf-2.0)
+BuildRequires: pkgconfig(libgnomeui-2.0)
+BuildRequires: pkgconfig(gnome-keyring-1)
+BuildRequires: pkgconfig(libpng15)
+Requires: gtk+3
+Requires: dbus
+Requires: NetworkManager	>= %{nm_version}
+Requires: vpnc				>= %{vpnc_version}
+Requires: shared-mime-info	>= %{shared_mime_version}
 Requires: GConf2
 Requires: gnome-keyring
 Requires(post): desktop-file-utils
