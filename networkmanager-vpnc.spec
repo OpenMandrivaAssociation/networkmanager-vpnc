@@ -64,6 +64,5 @@ rm -f %{buildroot}%{_libdir}/NetworkManager/lib*.la
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 %config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
-# For now disabled in upstream
-#{_datadir}/applications/nm-vpnc.desktop
+%{_datadir}/applications/nm-vpnc-auth-dialog.desktop
 %{_datadir}/icons/hicolor/48x48/apps/gnome-mime-application-x-cisco-vpn-settings.png
