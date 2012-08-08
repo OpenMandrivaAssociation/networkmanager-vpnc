@@ -10,7 +10,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Base
 URL:		http://www.gnome.org/projects/NetworkManager/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/0.9/NetworkManager-vpnc-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/NetworkManager-vpnc-%{version}.tar.xz
 # ubuntu
 Patch0:	gtk_table_to_gtk_grid.patch
 
