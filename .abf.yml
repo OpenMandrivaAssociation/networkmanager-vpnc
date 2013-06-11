@@ -1,2 +1,4 @@
+removed_sources:
+  NetworkManager-vpnc-0.9.8.0.tar.xz: eaac9c6d5533e55b871f8076b915b908c999ed29
 sources:
-  "NetworkManager-vpnc-0.9.8.0.tar.xz": eaac9c6d5533e55b871f8076b915b908c999ed29
+  NetworkManager-vpnc-0.9.8.2.tar.xz: c680b0048f5bd288e63f0c26096683fc219f1f7b

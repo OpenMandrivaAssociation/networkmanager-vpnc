@@ -3,7 +3,7 @@
 Summary:	NetworkManager VPN integration for vpnc
 Name:		networkmanager-vpnc
 Epoch:		1
-Version:	0.9.8.0
+Version:	0.9.8.2
 Release:	1
 License:	GPLv2+
 Group:		System/Base
@@ -21,7 +21,6 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libnm-util)
 BuildRequires:	pkgconfig(libnm-glib)
 BuildRequires:	pkgconfig(libnm-glib-vpn)
-BuildRequires:	pkgconfig(libgnomeui-2.0)
 BuildRequires:	pkgconfig(libpng15)
 Requires:	gtk+3
 Requires:	dbus
