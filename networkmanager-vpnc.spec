@@ -9,8 +9,6 @@ License:	GPLv2+
 Group:		System/Base
 Url:		http://www.gnome.org/projects/NetworkManager/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-vpnc/%{url_ver}/NetworkManager-vpnc-%{version}.tar.xz
-# ubuntu
-Patch0:		gtk_table_to_gtk_grid.patch
 
 BuildRequires:	gettext
 BuildRequires:	intltool
