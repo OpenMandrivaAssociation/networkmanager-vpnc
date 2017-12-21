@@ -3,7 +3,7 @@
 Summary:	NetworkManager VPN integration for vpnc
 Name:		networkmanager-vpnc
 Epoch:		1
-Version:	1.0.6
+Version:	1.2.4
 Release:	1
 License:	GPLv2+
 Group:		System/Base
@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(libnm-glib-vpn)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(libnm-gtk) >= 1.0.5
 BuildRequires:	pkgconfig(libsecret-unstable)
+BuildRequires:	pkgconfig(libnma)
 Requires:	gtk+3
 Requires:	dbus
 Requires:	NetworkManager
@@ -55,10 +56,9 @@ with NetworkManager and the GNOME desktop
 %{_libexecdir}/nm-vpnc-auth-dialog
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
-%{_libdir}/NetworkManager/libnm-vpnc-properties.so
+%{_libdir}/NetworkManager/*.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 %config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
-%{_datadir}/applications/nm-vpnc-auth-dialog.desktop
-%{_iconsdir}/hicolor/48x48/apps/gnome-mime-application-x-cisco-vpn-settings.png
-
+%{_prefix}/lib/NetworkManager/VPN/nm-vpnc-service.name
+%{_datadir}/appdata/network-manager-vpnc.metainfo.xml
