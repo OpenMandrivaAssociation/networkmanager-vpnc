@@ -56,10 +56,9 @@ with NetworkManager and the GNOME desktop
 %{_libexecdir}/nm-vpnc-auth-dialog
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
-%{_libdir}/NetworkManager/libnm-vpnc-properties.so
+%{_libdir}/NetworkManager/*.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 %config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
-%{_datadir}/applications/nm-vpnc-auth-dialog.desktop
-%{_iconsdir}/hicolor/48x48/apps/gnome-mime-application-x-cisco-vpn-settings.png
-
+%{_prefix}/lib/NetworkManager/VPN/nm-vpnc-service.name
+%{_datadir}/appdata/network-manager-vpnc.metainfo.xml
