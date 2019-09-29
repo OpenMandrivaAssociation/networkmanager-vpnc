@@ -55,7 +55,6 @@ with NetworkManager and the GNOME desktop
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
 %{_libdir}/NetworkManager/*.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
-%config(noreplace) %{_sysconfdir}/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
 %{_prefix}/lib/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/appdata/network-manager-vpnc.metainfo.xml
