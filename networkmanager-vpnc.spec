@@ -2,9 +2,8 @@
 
 Summary:	NetworkManager VPN integration for vpnc
 Name:		networkmanager-vpnc
-Epoch:		1
 Version:	1.2.6
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.gnome.org/projects/NetworkManager/
@@ -18,7 +17,6 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(libsecret-unstable)
 BuildRequires:	pkgconfig(libnma)
-Requires:	gtk+3
 Requires:	dbus
 Requires:	NetworkManager
 Requires:	vpnc
@@ -27,11 +25,19 @@ Requires(post,postun): desktop-file-utils
 
 %description
 This package contains software for integrating the vpnc VPN software
-with NetworkManager and the GNOME desktop
+with NetworkManager
+
+%package gtk
+Summary:        GTK frontend for configuring VPNC connections with NetworkManager
+Group:          Tools
+Requires:       %{name} = %{EVRD}
+Supplements:    networkmanager-applet
+
+%description gtk
+GTK frontend for configuring VPNC connections with NetworkManager
 
 %prep
-%setup -qn NetworkManager-vpnc-%{version}
-%autopatch -p1
+%autosetup -p1 -n NetworkManager-vpnc-%{version}
 
 %build
 %configure \
@@ -49,11 +55,14 @@ with NetworkManager and the GNOME desktop
 
 %files -f NetworkManager-vpnc.lang
 %doc AUTHORS ChangeLog
-%{_libexecdir}/nm-vpnc-auth-dialog
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
-%{_libdir}/NetworkManager/*.so
+%{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc.so
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
-%{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
 %{_prefix}/lib/NetworkManager/VPN/nm-vpnc-service.name
 %{_datadir}/appdata/network-manager-vpnc.metainfo.xml
+
+%files gtk
+%{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc-editor.so
+%{_libexecdir}/nm-vpnc-auth-dialog
+%{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
