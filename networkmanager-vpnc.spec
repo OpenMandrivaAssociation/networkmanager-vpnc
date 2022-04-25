@@ -60,11 +60,12 @@ GTK frontend for configuring VPNC connections with NetworkManager
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc.so
-#config(noreplace) #{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
+%{_datadir}/dbus-1/system.d/nm-vpnc-service.conf
 %{_prefix}/lib/NetworkManager/VPN/nm-vpnc-service.name
-#{_datadir}/appdata/network-manager-vpnc.metainfo.xml
+%{_datadir}/metainfo/network-manager-vpnc.metainfo.xml
 
 %files gtk
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc-editor.so
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-vpnc-editor.so
 %{_libexecdir}/nm-vpnc-auth-dialog
 #{_datadir}/gnome-vpn-properties/vpnc/nm-vpnc-dialog.ui
