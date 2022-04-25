@@ -2,8 +2,8 @@
 
 Summary:	NetworkManager VPN integration for vpnc
 Name:		networkmanager-vpnc
-Version:	1.2.6
-Release:	4
+Version:	1.2.8
+Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.gnome.org/projects/NetworkManager/
@@ -14,6 +14,7 @@ BuildRequires:	intltool
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(libsecret-unstable)
 BuildRequires:	pkgconfig(libnma)
@@ -44,6 +45,7 @@ GTK frontend for configuring VPNC connections with NetworkManager
 	--enable-more-warnings=yes \
 	--with-gtkver=3 \
 	--with-tests=yes \
+	--with-gtk4 \
 	--without-libnm-glib
 
 %make_build
