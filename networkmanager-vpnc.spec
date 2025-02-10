@@ -56,7 +56,7 @@ GTK frontend for configuring VPNC connections with NetworkManager
 %find_lang NetworkManager-vpnc
 
 %files -f NetworkManager-vpnc.lang
-%doc AUTHORS ChangeLog
+%doc AUTHORS
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc.so
